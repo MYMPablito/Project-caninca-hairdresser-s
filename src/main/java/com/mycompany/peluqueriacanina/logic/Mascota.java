@@ -93,6 +93,10 @@ public class Mascota implements Serializable {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
+
+    public void setunDuenio(Duenio duenio) {
+        Duenio unDuenio = this.unDuenio;
+    }
 }
     
     

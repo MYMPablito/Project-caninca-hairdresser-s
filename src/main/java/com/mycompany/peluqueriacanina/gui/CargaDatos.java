@@ -1,11 +1,17 @@
 
 package com.mycompany.peluqueriacanina.gui;
+import com.mycompany.peluqueriacanina.logic.Controladora;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 
 public class CargaDatos extends javax.swing.JFrame {
+    
+    Controladora control = new Controladora();
 
     
     public CargaDatos() {
+        //control = new Controladora();
         initComponents();
     }
 
@@ -155,6 +161,11 @@ public class CargaDatos extends javax.swing.JFrame {
         btnGuardar.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         btnGuardar.setIcon(new javax.swing.ImageIcon("D:\\PROYECTOS PROGRAMACIÓN\\NetBeans IDE\\Proyecto Agenda Electrónica\\Agenda Electrónica\\PeluqueriaCanina\\imgs\\disquete.png")); // NOI18N
         btnGuardar.setText("  Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -227,6 +238,29 @@ public class CargaDatos extends javax.swing.JFrame {
         cmbAlergico.setSelectedIndex(0);
         cmbAtencionEspecial.setSelectedIndex(0);
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        
+        String nombreMasco = txtNombre.getText();
+        String raza = txtRaza.getText();
+        String color = txtColor.getText();
+        String observaciones = txtObservaciones.getText();
+        String nombreDuenio = txtNomDuenio.getText();
+        String celDuenio = txtCelDuenio.getText();
+        
+        String alergico = (String) cmbAlergico.getSelectedItem();
+        String atencion_especial = (String) cmbAtencionEspecial.getSelectedItem();        
+        
+        
+        control.guardar(nombreMasco, raza, color, observaciones, nombreDuenio,
+                celDuenio, alergico, atencion_especial);
+        
+        JOptionPane optionPane = new JOptionPane("Se guardó correctamente!!");
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog("Guardado exitoso!!");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
